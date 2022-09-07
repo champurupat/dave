@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>brov2_description</name>
+  <version>0.0.0</version>
+  <description>The brov2_description package</description>
+  <author email="png@hawaii.edu">Patrick Ng</author>
+  <maintainer email="png@hawaii.edu">Patrick Ng</maintainer>
+  <license>TODO</license>
+  <buildtool_depend>catkin</buildtool_depend>
+  <export>
+    <!-- Other tools can request additional information be placed here -->
+
+  </export>
+</package>

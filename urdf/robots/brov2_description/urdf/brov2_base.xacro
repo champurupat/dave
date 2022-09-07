@@ -17,10 +17,11 @@
 
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
   <!--
-      The RexROV meshes and hydrodynamic parameters are based on the parameters and dimensions
-      from the SF 30k.
+      BlueROV2 Heavy
 
       References:
+        [0] Wu, Chu-Jou. "6-dof modelling and control of a remotely operated vehicle."
+            MS Thesis. Flinders University, 2018.
         [1] Dukan, Fredrik. "ROV Motion Control Systems." PhD Thesis, NTNU, 2014.
         [2] Berg, Viktor. Development and Commissioning of a DP system for ROV SF 30k. MS
             thesis. Institutt for marin teknikk, 2012.
@@ -31,20 +32,20 @@
   <xacro:include filename="$(find uuv_gazebo_ros_plugins)/urdf/snippets.xacro"/>  
 
   <!-- Parameters -->
-  <xacro:property name="namespace" value="rexrov"/>
-  <xacro:property name="visual_mesh_file" value="file://$(find uuv_descriptions)/meshes/RexROV_no_props.dae"/>
-  <xacro:property name="prop_mesh_file" value="file://$(find uuv_descriptions)/meshes/prop.dae"/>
+  <xacro:property name="namespace" value="brov2"/>
+  <xacro:property name="visual_mesh_file" value="file://$(find brov2_description)/meshes/brov2.dae"/>
+  <xacro:property name="prop_mesh_file" value="file://$(find brov2_description)/meshes/prop.dae"/>
 
-  <!-- Mass, see p.28 in Berg2012 -->
-  <xacro:property name="mass" value="1862.87"/>
+  <!-- Mass, see p.48 in Wu2018 -->
+  <xacro:property name="mass" value="11.5"/>
 
-  <xacro:macro name="rexrov_base" params="namespace *gazebo inertial_reference_frame">
+  <xacro:macro name="brov2_base" params="namespace *gazebo inertial_reference_frame">
     <!-- base_link according to ROS conventions: x forward, z up -->
     <link name="${namespace}/base_link">
       <inertial>
         <mass value="${mass}"/>
         <origin xyz="0 0 0"/>
-        <inertia ixx="525.39" ixy="1.44" ixz="33.41" iyy="794.20" iyz="2.6" izz="691.23"/>
+        <inertia ixx="0.16" ixy="0.0" ixz="0" iyy="0.16" iyz="0" izz="0.16"/>
       </inertial>
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -52,28 +53,13 @@
           <mesh filename="${visual_mesh_file}" scale="1 1 1"/>
         </geometry>
       </visual>
-      <!-- bottom plate -->
+      <!-- note: orientation yaw 180? -->
       <collision>
-        <origin xyz="0 0 -0.75" rpy="0 0 0"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <box size="2.56 1.50 0.10"/>
+          <mesh filename="${visual_mesh_file}" scale="1 1 1"/>
         </geometry>
       </collision>
-      <!-- top plate -->
-      <collision>
-        <origin xyz="0 0 0.60" rpy="0 0 0"/>
-        <geometry><box size="2.56 1.50 0.40"/></geometry>
-      </collision>
-      <!-- left / right sides -->
-      <collision>
-        <origin xyz="-0.20 0.70 -0.15" rpy="0 0 0"/>
-        <geometry><box size="2.20 0.10 1.10"/></geometry>
-      </collision>
-      <collision>
-        <origin xyz="-0.20 -0.70 -0.15" rpy="0 0 0"/>
-        <geometry><box size="2.20 0.10 1.10"/></geometry>
-      </collision>
-
     </link>
 
     <!-- Set up hydrodynamic plugin given as input parameter -->
@@ -86,8 +72,8 @@
       </plugin>
     </gazebo> -->
 
-    <xacro:include filename="$(find uuv_descriptions)/urdf/rexrov_actuators.xacro"/>
-    <xacro:include filename="$(find rexrov_description)/urdf/rexrov_sensors.xacro"/>
+    <xacro:include filename="$(find brov2_description)/urdf/brov2_actuators.xacro"/>
+    <xacro:include filename="$(find brov2_description)/urdf/brov2_sensors.xacro"/>
 
   </xacro:macro>
 </robot>

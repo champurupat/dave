@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!-- Copyright (c) 2016 The UUV Simulator Authors.
+     All rights reserved.
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <!--
+    Center of buoyancy according to Table 5.1 p. 48 in Wu2018.
+    -->
+    <xacro:property name="cob" value="0.0 0.0 0.2"/>
+
+    <!-- overestimated cube based on brov2 dimensions https://bluerobotics.com/store/rov/bluerov2-upgrade-kits/brov2-heavy-retrofit/ -->
+    <xacro:property name="volume" value="0.0661"/>
+
+    <xacro:macro name="brov2_hydro_model" params="namespace">
+        <link name="${namespace}/base_link">
+            <neutrally_buoyant>0</neutrally_buoyant>
+            <volume>${volume}</volume>
+            <box>
+                <width>0.575</width>
+                <length>0.4571</length>
+                <height>0.2539</height>
+            </box>
+            <center_of_buoyancy>${cob}</center_of_buoyancy>
+            <hydrodynamic_model>
+                <type>fossen</type>
+                <!-- Added mass: see p.28 Table 5.2 p. 48 in Wu2018 -->
+                <added_mass>
+                    -5.5   0.0  0.0    0.0   0.0   0.0
+                    0.0   -12.7 0.0    0.0   0.0   0.0
+                    0.0   0.0  -14.57  0.0   0.0   0.0
+                    0.0   0.0  0.0    -0.12  0.0   0.0
+                    0.0   0.0  0.0     0.0  -0.12  0.0
+                    0.0   0.0  0.0     0.0   0.0  -0.12
+                </added_mass>
+                <!-- Linear Damping: see p.28 Table 5.3 p. 48 in Wu2018 -->
+                <linear_damping>
+                    -4.03 -6.22 -5.18 -0.07 -0.07 -0.07
+                </linear_damping>
+                <!-- Non-linear Damping: see p.28 Table 5.3 p. 48 in Wu2018 -->
+                <quadratic_damping>
+                    -18.18 -21.66 -36.99 -1.55 -1.55 -1.55
+                </quadratic_damping>
+            </hydrodynamic_model>
+        </link>
+    </xacro:macro>
+
+</robot>
