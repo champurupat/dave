@@ -6,7 +6,7 @@
     <arg name="namespace" default="brov2"/>
     <arg name="set_timeout" default="false"/>
     <arg name="timeout" default="0.0"/>
-    <arg name="velocity_control" default="true"/>
+    <arg name="velocity_control" default="false"/>
     <arg name="joy_id" default="1"/>
 
     <!-- use Gazebo's empty_world.launch with dave_ocean_waves.world -->

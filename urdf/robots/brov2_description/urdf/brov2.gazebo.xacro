@@ -19,7 +19,7 @@
     <!--
     Center of buoyancy according to Table 5.1 p. 48 in Wu2018.
     -->
-    <xacro:property name="cob" value="0.0 0.0 0.2"/>
+    <xacro:property name="cob" value="0.0 0.0 0.0"/>
 
     <!-- overestimated cube based on brov2 dimensions https://bluerobotics.com/store/rov/bluerov2-upgrade-kits/brov2-heavy-retrofit/ -->
     <xacro:property name="volume" value="0.0661"/>
