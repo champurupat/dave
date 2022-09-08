@@ -19,7 +19,7 @@
     <!--
     Center of buoyancy according to Table 5.1 p. 48 in Wu2018.
     -->
-    <xacro:property name="cob" value="0.0 0.0 0.2"/>
+    <xacro:property name="cob" value="0.0 0.0 0.0"/>
 
     <!-- overestimated cube based on brov2 dimensions https://bluerobotics.com/store/rov/bluerov2-upgrade-kits/brov2-heavy-retrofit/ -->
     <xacro:property name="volume" value="0.0661"/>
@@ -45,16 +45,23 @@
                     0.0   0.0  0.0     0.0  -0.12  0.0
                     0.0   0.0  0.0     0.0   0.0  -0.12
                 </added_mass>
-                <!-- Linear Damping: see p.28 Table 5.3 p. 48 in Wu2018 -->
+                <!-- Linear Damping: see Table 5.3 p. 48 in Wu2018 -->
                 <linear_damping>
                     -4.03 -6.22 -5.18 -0.07 -0.07 -0.07
                 </linear_damping>
-                <!-- Non-linear Damping: see p.28 Table 5.3 p. 48 in Wu2018 -->
+                <!-- Non-linear Damping: see Table 5.3 p. 48 in Wu2018 -->
                 <quadratic_damping>
                     -18.18 -21.66 -36.99 -1.55 -1.55 -1.55
                 </quadratic_damping>
             </hydrodynamic_model>
         </link>
     </xacro:macro>
-
+                <!-- <added_mass>
+                    5.5   0.0  0.0    0.0   0.0   0.0
+                    0.0   12.7 0.0    0.0   0.0   0.0
+                    0.0   0.0  14.57  0.0   0.0   0.0
+                    0.0   0.0  0.0    0.12  0.0   0.0
+                    0.0   0.0  0.0    0.0   0.12  0.0
+                    0.0   0.0  0.0    0.0   0.0   0.12
+                </added_mass> -->
 </robot>
