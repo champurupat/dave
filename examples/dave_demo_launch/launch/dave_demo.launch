@@ -7,7 +7,7 @@
     <arg name="set_timeout" default="false"/>
     <arg name="timeout" default="0.0"/>
     <arg name="velocity_control" default="true"/>
-    <arg name="joy_id" default="0"/>
+    <arg name="joy_id" default="1"/>
 
     <!-- use Gazebo's empty_world.launch with dave_ocean_waves.world -->
     <include file="$(find gazebo_ros)/launch/empty_world.launch">

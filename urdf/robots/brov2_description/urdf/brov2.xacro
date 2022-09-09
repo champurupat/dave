@@ -19,7 +19,7 @@
 
   <xacro:arg name="debug" default="0"/>
   <xacro:arg name="namespace" default="brov2"/>
-  <xacro:arg name="inertial_reference_frame" default="world"/>
+  <xacro:arg name="inertial_reference_frame" default="world_ned"/>
   <!-- Include the ROV macro file -->
   <xacro:include filename="$(find brov2_description)/urdf/brov2_base.xacro"/>
   <xacro:include filename="$(find brov2_description)/urdf/brov2.gazebo.xacro"/>

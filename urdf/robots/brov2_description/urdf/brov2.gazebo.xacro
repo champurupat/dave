@@ -22,7 +22,7 @@
     <xacro:property name="cob" value="0.0 0.0 0.0"/>
 
     <!-- overestimated cube based on brov2 dimensions https://bluerobotics.com/store/rov/bluerov2-upgrade-kits/brov2-heavy-retrofit/ -->
-    <xacro:property name="volume" value="0.0661"/>
+    <xacro:property name="volume" value="0.01142"/>
 
     <xacro:macro name="brov2_hydro_model" params="namespace">
         <link name="${namespace}/base_link">

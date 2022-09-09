@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
     <arg name="gui" default="true"/>
-    <arg name="paused" default="false"/>
+    <arg name="paused" default="true"/>
     <arg name="world_name" default="$(find dave_worlds)/worlds/dave_ocean_waves.world"/>
     <arg name="namespace" default="brov2"/>
     <arg name="set_timeout" default="false"/>
@@ -70,6 +70,7 @@
         <arg name="y" value="4"/>
         <arg name="z" value="-93"/>
         <arg name="yaw" value="-1.8"/>
+        <arg name="roll" value="3.1415"/>
     </include>
 
     <!-- Velocity teleop (UUV stays in position when joystick is not used) -->
