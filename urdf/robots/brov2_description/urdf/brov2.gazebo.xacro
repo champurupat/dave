@@ -19,14 +19,14 @@
     <!--
     Center of buoyancy according to Table 5.1 p. 48 in Wu2018.
     -->
-    <xacro:property name="cob" value="0.0 0.0 0.0"/>
+    <xacro:property name="cob" value="0.0 0.0 0.2"/>
 
     <!-- overestimated cube based on brov2 dimensions https://bluerobotics.com/store/rov/bluerov2-upgrade-kits/brov2-heavy-retrofit/ -->
     <xacro:property name="volume" value="0.0661"/>
 
     <xacro:macro name="brov2_hydro_model" params="namespace">
         <link name="${namespace}/base_link">
-            <neutrally_buoyant>0</neutrally_buoyant>
+            <neutrally_buoyant>1</neutrally_buoyant>
             <volume>${volume}</volume>
             <box>
                 <width>0.575</width>
@@ -38,12 +38,12 @@
                 <type>fossen</type>
                 <!-- Added mass: see p.28 Table 5.2 p. 48 in Wu2018 -->
                 <added_mass>
-                    -5.5   0.0  0.0    0.0   0.0   0.0
-                    0.0   -12.7 0.0    0.0   0.0   0.0
-                    0.0   0.0  -14.57  0.0   0.0   0.0
-                    0.0   0.0  0.0    -0.12  0.0   0.0
-                    0.0   0.0  0.0     0.0  -0.12  0.0
-                    0.0   0.0  0.0     0.0   0.0  -0.12
+                    5.5   0.0  0.0    0.0   0.0   0.0
+                    0.0   12.7 0.0    0.0   0.0   0.0
+                    0.0   0.0  14.57  0.0   0.0   0.0
+                    0.0   0.0  0.0    0.12  0.0   0.0
+                    0.0   0.0  0.0    0.0   0.12  0.0
+                    0.0   0.0  0.0    0.0   0.0   0.12
                 </added_mass>
                 <!-- Linear Damping: see Table 5.3 p. 48 in Wu2018 -->
                 <linear_damping>
@@ -64,4 +64,11 @@
                     0.0   0.0  0.0    0.0   0.12  0.0
                     0.0   0.0  0.0    0.0   0.0   0.12
                 </added_mass> -->
+
+                    <!-- -5.5   0.0  0.0    0.0   0.0   0.0
+                    0.0   -12.7 0.0    0.0   0.0   0.0
+                    0.0   0.0  -14.57  0.0   0.0   0.0
+                    0.0   0.0  0.0    -0.12  0.0   0.0
+                    0.0   0.0  0.0     0.0  -0.12  0.0
+                    0.0   0.0  0.0     0.0   0.0  -0.12 -->
 </robot>
